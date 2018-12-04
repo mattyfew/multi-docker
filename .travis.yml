@@ -15,7 +15,10 @@ after_success:
   - docker build -t mattyfew/multi-worker ./worker
 
 # log in to the docker CLI
-
-
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 # take those image and push them to docker hub
+  - docker push mattyfew/multi-client
+  - docker push mattyfew/multi-nginx
+  - docker push mattyfew/multi-server
+  - docker push mattyfew/multi-worker
